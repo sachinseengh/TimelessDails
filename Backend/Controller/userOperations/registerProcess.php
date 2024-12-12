@@ -22,7 +22,3 @@ $user->set('address', $_POST['address']);
 
 
 $user->save();
-
-
-
-?>

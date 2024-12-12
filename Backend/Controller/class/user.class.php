@@ -29,15 +29,8 @@ class User extends common
     public function retrieve()
     {
 
-<<<<<<< HEAD
         $conn  = new mysqli("localhost", "root", "", "timelessdials");
         $sql = " select * from customer  where email ='$this->email' or cid='$this->cid'";
-=======
-        $conn  = new mysqli("localhost","root","","TimelessDials");
-        $sql =" select * from customer  where email ='$this->email' or cid='$this->cid'";
-        
-        $res = mysqli_query($conn,$sql);
->>>>>>> origin/master
 
         $res = mysqli_query($conn, $sql);
 
@@ -50,13 +43,8 @@ class User extends common
     }
     public function retrieveAll()
     {
-<<<<<<< HEAD
         $conn = mysqli_connect('localhost', 'root', '', 'timelessdials');
 
-=======
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
-     
->>>>>>> origin/master
         $sql = "select * from customer ";
         $var = mysqli_query($conn, $sql);
         if ($var->num_rows > 0) {
@@ -77,7 +65,6 @@ class User extends common
         if (mysqli_num_rows($res) > 0) {
 
 
-<<<<<<< HEAD
             session_start();
             $data = $this->retrieve();
             $this->cid = $data['cid'];
@@ -89,32 +76,21 @@ class User extends common
             setcookie("cid", $this->cid, time() + (24 * 60 *  60), "/"); // expires in 1 day
 
 
-            header('Location: /TimelessDials/shop.php');
+            header('Location: /TimelessDials/index.php?Msg=' . urlencode("Login Successful"));
             exit();
         } else {
-=======
-            header('Location: /TimelessDials/index.php');
-            exit();
-        }else{
->>>>>>> origin/master
             header('Location: /TimelessDials/users/login.php?ErrMsg=' . urlencode("Incorrect Credentials"));
             exit();
         }
     }
 
-<<<<<<< HEAD
     public function edit()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
-=======
-    public function edit(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
->>>>>>> origin/master
 
 
         $sql = "update customer set password ='$this->password',phone='$this->phone',address ='$this->address',city='$this->city' where cid='$this->cid'";
 
-<<<<<<< HEAD
 
         $res = mysqli_query($conn, $sql);
 
@@ -122,25 +98,14 @@ class User extends common
             header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Details Updated"));
             exit();
         } else {
-=======
-        if($res){
-            header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Details Updated"));
-            exit();
-        }else{
->>>>>>> origin/master
             header('Location: /TimelessDials/users/edit.php?Msg=' . urlencode("Failed to Update"));
             exit();
         }
     }
 
-<<<<<<< HEAD
     public function delete()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
-=======
-    public function delete(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
->>>>>>> origin/master
 
 
 
@@ -168,24 +133,15 @@ class User extends common
             setcookie('cid', '', time() - 3600, '/');
             header('Location: /TimelessDials/users/login.php?Msg=' . urlencode("Account deleted"));
             exit();
-<<<<<<< HEAD
         } else {
-=======
-        }else{
->>>>>>> origin/master
             header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
     }
     //this will be used by admin
-<<<<<<< HEAD
     public function deleteCustomer()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
-=======
-    public function deleteCustomer(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
->>>>>>> origin/master
 
 
 
@@ -214,11 +170,7 @@ class User extends common
 
             header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Account deleted"));
             exit();
-<<<<<<< HEAD
         } else {
-=======
-        }else{
->>>>>>> origin/master
             header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
@@ -237,11 +189,7 @@ class User extends common
         setcookie('email', '', time() - 3600, '/');
         setcookie('cid', '', time() - 3600, '/');
 
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> origin/master
         header('Location: /TimelessDials/users/login.php?Msg=' . urlencode("Logout Successfully"));
         exit();
     }
