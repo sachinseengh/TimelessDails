@@ -333,7 +333,7 @@ body.dark-theme {
   height: 330px;
 } */
 
-.single__price{
+.single__price {
   display: block !important;
   margin-bottom: 1rem !important;
 }
@@ -367,7 +367,7 @@ body.dark-theme {
   margin-bottom: var(--mb-1-5);
 }
 
-.single__description{
+.single__description {
   max-width: 450px;
 }
 
@@ -1358,4 +1358,110 @@ body.dark-theme {
 
 .cart__checkout-button:hover {
   background-color: #ee8e26;
+}
+
+/* //.profile-card */
+
+.profile__wrapper {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profile-card p {
+  font-size: 1em;
+  margin: 8px 0;
+  color: #555;
+}
+
+.profile-card .details {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.profile-card .details .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-card .details .info span {
+  font-weight: bold;
+  color: #444;
+  width: 100px;
+}
+
+.profile-card .details .info div {
+  color: #666;
+}
+
+.profile-card .details .info.name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-card .details .info.email {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-card .details .info.phone {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-card .details .info.address {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-card .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--first-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.profile-card .btn:hover {
+  background-color: var(--first-color);
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 15px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.2em;
+  }
+
+  .profile-card .details .info span {
+    width: 80px;
+  }
 }
