@@ -10,16 +10,16 @@ class Product extends common{
 
 
     public function Save(){
-    $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+    $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
 
     $sql ="insert into product (name,price,brand,description,category,sub_category,featured_img,quantity) values('$this->name','$this->price','$this->brand','$this->desc','$this->category','$this->sub_category','$this->featured_img','$this->quantity')";
 
     $res = mysqli_query($conn,$sql);
     if($res){
-        header('Location:../manage-product.php?msg="Product Added Successfully"');
+        header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Added Successfully"');
         exit();
     }else{
-        header('Location:../manage-product.php?ErrMsg="Failed to add Product"');
+        header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to add Product"');
         exit();
     }
 
@@ -27,7 +27,7 @@ class Product extends common{
 
     public function retrieve()
     {
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
         $sql = "select * from product order by pid desc ";
         $var = mysqli_query($conn,$sql);
@@ -41,7 +41,7 @@ class Product extends common{
 
     
     public function Edit(){
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
     
         $sql ="update product set name ='$this->name',price ='$this->price',description='$this->desc',category='$this->category',sub_category='$this->sub_category',featured_img='$this->featured_img',brand='$this->brand',quantity='$this->quantity' where pid='$this->pid'";
 
@@ -60,7 +60,7 @@ class Product extends common{
         }
 
     public function getById(){
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
         $sql = "select * from product where pid='$this->pid' ";
         $var = mysqli_query($conn,$sql);
@@ -73,7 +73,7 @@ class Product extends common{
     }
 
     public function getProducts(){
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
         $sql = "select * from product order by pid desc limit 12";
     
@@ -86,7 +86,7 @@ class Product extends common{
         }
     }
     public function getProductsMen(){
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
         $sql = "select * from product where category='men' order by pid desc limit 3";
     
@@ -100,7 +100,7 @@ class Product extends common{
     }
 
     public function getByCategory(){
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDails');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
         $sql = "select * from product where category='$this->category' and sub_category='$this->sub_category'";
         
@@ -118,7 +118,7 @@ class Product extends common{
 
     public function Delete(){
 
-        $conn = mysqli_connect('localhost','root','','TimelessDails');
+        $conn = mysqli_connect('localhost','root','','TimelessDials');
         $sql = "delete from product where pid = '$this->pid'";
 
 

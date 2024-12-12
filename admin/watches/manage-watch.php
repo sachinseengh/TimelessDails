@@ -1,6 +1,14 @@
 <?php
-include("headerFooter/header.php")
+include("headerFooter/header.php");
+
+require_once('../../Backend/Controller/class/product.class.php');
+$product = new Product();
+$items = $product->retrieve();
+
+
+
 ?>
+
 <!-- Main Content -->
 <div class="main-content">
   <section class="section">
@@ -43,6 +51,15 @@ include("headerFooter/header.php")
                           <th class="sorting" tabindex="0" aria-controls="table-2" rowspan="1" colspan="1"
                             aria-label="Status: activate to sort column ascending" style="width: 132.641px;">
                             Price</th>
+                            <th class="sorting" tabindex="0" aria-controls="table-2" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 132.641px;">
+                            Category</th>
+                            <th class="sorting" tabindex="0" aria-controls="table-2" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 132.641px;">
+                            subCategory</th>
+                            <th class="sorting" tabindex="0" aria-controls="table-2" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 132.641px;">
+                            Image</th>
                           <th class="sorting" tabindex="0" aria-controls="table-2" rowspan="1" colspan="1"
                             aria-label="Action: activate to sort column ascending" style="width: 91.8281px;">
                             Action</th>
@@ -53,6 +70,12 @@ include("headerFooter/header.php")
 
 
 
+
+                      <tbody>
+
+
+                        <?php   foreach($items as $item ) { ?>
+
                         <tr role="row" class="odd">
                           <td class="sorting_1">
                             <div class="custom-checkbox custom-control">
@@ -61,20 +84,24 @@ include("headerFooter/header.php")
                               <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
                             </div>
                           </td>
-                          <td>Create a mobile app</td>
-                          <td>
-                            LV
-                          </td>
-                          <td>2018-01-20</td>
-                          <td>
-                            data
-                          </td>
+                          <td><?php echo $item['name']; ?></td>
+                          <td><?php echo $item['brand']; ?></td>
+                          <td><?php echo $item['quantity']; ?></td>
+                            <td><?php echo $item['price']; ?></td>
+                            <td><?php echo $item['category']; ?></td>
+
+                            <td><?php echo $item['sub_category']; ?></td>
+                            <td><img src="../../backend/images/<?php echo $item['featured_img']; ?>" alt="" srcset="" height="70rem"
+                                    width="70rem"></td>
+                            
                           <td class="flex-it">
                             <a href="update-watch.php" class="btn btn-info">Edit</a>
                             <a href="#" class="btn btn-danger">Delete</a>
 
                           </td>
                         </tr>
+
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>

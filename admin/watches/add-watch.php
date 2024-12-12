@@ -57,7 +57,7 @@ include("headerFooter/header.php")
 
                                 <div class="form-group">
                                     <label>Quantity</label>
-                                    <input type="number" class="form-control" name="price">
+                                    <input type="number" class="form-control" name="quantity">
                                 </div>
 
 
