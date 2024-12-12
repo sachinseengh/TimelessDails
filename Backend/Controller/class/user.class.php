@@ -29,10 +29,10 @@ class User extends common
     public function retrieve()
     {
 
-        $conn  = new mysqli("localhost","root","","TimelessDials");
-        $sql =" select * from customer  where email ='$this->email' or cid='$this->cid'";
-        
-        $res = mysqli_query($conn,$sql);
+        $conn  = new mysqli("localhost", "root", "", "TimelessDials");
+        $sql = " select * from customer  where email ='$this->email' or cid='$this->cid'";
+
+        $res = mysqli_query($conn, $sql);
 
         $res = mysqli_query($conn, $sql);
 
@@ -46,7 +46,7 @@ class User extends common
     public function retrieveAll()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
-     
+
         $sql = "select * from customer ";
         $var = mysqli_query($conn, $sql);
         if ($var->num_rows > 0) {
@@ -70,15 +70,15 @@ class User extends common
             $data = $this->retrieve();
             $this->cid = $data['cid'];
 
-            $_SESSION['email']= $this->email;
-            $_SESSION['cid']=$this->cid;
+            $_SESSION['email'] = $this->email;
+            $_SESSION['cid'] = $this->cid;
             // Set a cookie that lasts for 1 days
-            setcookie("email",$this->email, time() + ( 24 * 60 * 60), "/"); // expires in 1 day
-            setcookie("cid",$this->cid, time() + ( 24 * 60 *  60), "/"); // expires in 1 day
+            setcookie("email", $this->email, time() + (24 * 60 * 60), "/"); // expires in 1 day
+            setcookie("cid", $this->cid, time() + (24 * 60 *  60), "/"); // expires in 1 day
 
-            header('Location: /TimelessDials/index.php');
+            header('Location: /TimelessDials/index.php?Msg=' . urlencode("Login Successful!"));
             exit();
-        }else{
+        } else {
             header('Location: /TimelessDials/user/login.php?ErrMsg=' . urlencode("Incorrect Credentials"));
             exit();
         }
@@ -188,7 +188,7 @@ class User extends common
         setcookie('email', '', time() - 3600, '/');
         setcookie('cid', '', time() - 3600, '/');
 
-        header('Location: /TimelessDials/user/login.php?Msg=' . urlencode("Logout Successfully"));
+        header('Location: /TimelessDials/user/login.php?Msg=' . urlencode("Logout Successful!"));
         exit();
     }
 }
