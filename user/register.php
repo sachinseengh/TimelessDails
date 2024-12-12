@@ -167,7 +167,7 @@
         <div class="container">
             <div class="login__container">
                 <div class="login-container">
-                    <form method="POST" class="login-form" action="../backend/Controller/userOperations/registerProcess.php">
+                    <form method="POST" class="login-form" action="../Backend/Controller/userOperations/registerProcess.php">
                         <h2 class="login-title">Register</h2>
                         <p class="login-subtitle">Please fill up the details to signup</p>
                         <div class="form-group">
