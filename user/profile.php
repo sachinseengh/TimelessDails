@@ -21,7 +21,7 @@ include("./headerFooter/header.php")
                 </div>
                 <div class="info phone">
                     <span>Phone:</span>
-                    <div>+123 456 7890</div>
+                    <div>+123 456 7890</div> 
                 </div>
                 <div class="info address">
                     <span>Address:</span>
