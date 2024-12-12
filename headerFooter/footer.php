@@ -79,6 +79,28 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!--==================== MESSAGE HANDLER ====================-->
+<?php
+// Fetch the message or error message from URL
+$message = isset($_GET['Msg']) ? $_GET['Msg'] : (isset($_GET['ErrMsg']) ? $_GET['ErrMsg'] : '');
+if ($message) {
+    // Escape the message to prevent XSS
+    $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            text: '$message',
+            icon: 'info', // Change to 'success', 'error', or 'warning' if needed
+            timer: 3000, // 3 seconds
+            showConfirmButton: false,
+            position: 'top-end', // Positioning at the top right
+            toast: true // Enables toast style
+        });
+    });
+</script>";
+}
+?>
+
 <!--=============== MAIN JS ===============-->
 <script src="assets/js/main.js"></script>
 </body>
