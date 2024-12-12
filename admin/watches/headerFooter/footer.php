@@ -34,4 +34,28 @@
 <script src="assets/js/custom.js"></script>
 </body>
 
+
 </html>
+
+
+<script>
+function handleImageSelection(event) {
+    const fileInput = event.target;
+    const oldImagePreview = document.getElementById('old-image-preview');
+    const existingImgInput = document.getElementById('existing_img');
+    const file = fileInput.files[0];
+
+    // If a new file is selected, hide the old image and clear the existing image input
+    if (file) {
+        oldImagePreview.style.display = 'none'; // Hide the old image
+        existingImgInput.value = ''; // Clear the existing image name
+    } else {
+        // If no file is selected, show the old image
+        oldImagePreview.style.display = 'block'; // Show the old image
+        existingImgInput.value = "<?php echo $item->featured_img; ?>"; // Set the existing image name
+    }
+}
+
+
+
+</script>

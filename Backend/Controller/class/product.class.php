@@ -50,10 +50,10 @@ class Product extends common{
      
         $res = mysqli_query($conn,$sql);
         if($res){
-            header('Location:../manage-product.php?msg="Product Edited Successfully"');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Edited Successfully"');
             exit();
         }else{
-            header('Location:../manage-product.php?ErrMsg="Failed to edit Product"');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to edit Product"');
             exit();
         }
     
@@ -126,10 +126,10 @@ class Product extends common{
         $res=mysqli_query($conn,$sql);
     
         if($res){
-            header('Location:./manage-product.php?msg=Product Deleted Successfully');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg=Product Deleted Successfully');
             exit();
         }else{
-            header('Location:./manage-product.php?ErrMsg="Product Deletion Failed');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Product Deletion Failed');
             exit();
         }
     }

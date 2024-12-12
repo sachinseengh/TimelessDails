@@ -95,8 +95,8 @@ $items = $product->retrieve();
                                     width="70rem"></td>
                             
                           <td class="flex-it">
-                            <a href="update-watch.php" class="btn btn-info">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="update-watch.php?id=<?php echo $item['pid'];?>" class="btn btn-info">Edit</a>
+                            <a href="delete-watch.php?id=<?php echo $item['pid'];?>" class="btn btn-danger">Delete</a>
 
                           </td>
                         </tr>

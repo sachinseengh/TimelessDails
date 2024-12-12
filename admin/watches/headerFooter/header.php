@@ -100,13 +100,13 @@
                                 <li><a class="nav-link" href="manage-watch.php">Manage Watches</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
+                        <!-- <li class="dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cogs"></i>
                                 <span>Watch Category</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="add-category.php">Add Category</a></li>
                                 <li><a class="nav-link" href="manage-category.php">Manage Category</a></li>
-                            </ul>
+                            </ul> -->
                         </li>
                     </ul>
                 </aside>
