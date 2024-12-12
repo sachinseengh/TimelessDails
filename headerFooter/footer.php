@@ -33,7 +33,7 @@
 
             <ul class="footer__links">
                 <li>
-                    <a href="#" class="footer__link">Road bikes</a>
+                    <a href="#" class="footer__link">Sports Watch</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">Mountain bikes</a>
