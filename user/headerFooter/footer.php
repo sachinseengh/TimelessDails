@@ -103,6 +103,55 @@ if ($message) {
 }
 ?>
 
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default action (navigation)
+
+            const deleteUrl = this.getAttribute('data-href'); // Get the URL from data-href
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete URL
+                    window.location.href = deleteUrl;
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.logout-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default action (navigation)
+
+            const logoutUrl = this.getAttribute('data-href'); // Get the URL from data-href
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You have to login again to shop!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete URL
+                    window.location.href = logoutUrl;
+                }
+            });
+        });
+    });
+</script>
+
+
 <!--=============== MAIN JS ===============-->
 <script src="../assets/js/main.js"></script>
 

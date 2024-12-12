@@ -1465,3 +1465,19 @@ body.dark-theme {
     width: 80px;
   }
 }
+
+.author-pic {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  background: #525252;
+  place-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.author-pic > span {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: #fff;
+}

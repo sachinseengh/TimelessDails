@@ -21,7 +21,7 @@ include("./headerFooter/header.php")
                 </div>
                 <div class="info phone">
                     <span>Phone:</span>
-                    <div>+123 456 7890</div> 
+                    <div>+123 456 7890</div>
                 </div>
                 <div class="info address">
                     <span>Address:</span>
@@ -30,8 +30,20 @@ include("./headerFooter/header.php")
             </div>
 
             <a href="#" class="btn">Edit Profile</a>
-            <a href="../backend/Controller/userOperations/logout.php" class="btn">Logout</a>
-            <a href="../backend/Controller/userOperations/deleteProcess.php" class="btn btn-primary">Delete</a>
+            <a href="../backend/Controller/userOperations/logout.php"
+                class="btn btn-primary logout-btn"
+                data-href="../backend/Controller/userOperations/logout.php">
+                Logout
+            </a>
+
+
+
+            <a href="../backend/Controller/userOperations/deleteProcess.php"
+                class="btn btn-primary delete-btn"
+                data-href="../backend/Controller/userOperations/deleteProcess.php">
+                Delete
+            </a>
+
         </div>
     </div>
 
