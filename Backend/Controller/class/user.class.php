@@ -29,15 +29,10 @@ class User extends common
     public function retrieve()
     {
 
-<<<<<<< HEAD
         $conn  = new mysqli("localhost","root","","TimelessDials");
         $sql =" select * from customer  where email ='$this->email' or cid='$this->cid'";
         
         $res = mysqli_query($conn,$sql);
-=======
-        $conn  = new mysqli("localhost", "root", "", "timelessdials");
-        $sql = " select * from customer  where email ='$this->email' or cid='$this->cid'";
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
 
         $res = mysqli_query($conn, $sql);
 
@@ -50,13 +45,8 @@ class User extends common
     }
     public function retrieveAll()
     {
-<<<<<<< HEAD
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
-=======
-        $conn = mysqli_connect('localhost', 'root', '', 'timelessdials');
-
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
         $sql = "select * from customer ";
         $var = mysqli_query($conn, $sql);
         if ($var->num_rows > 0) {
@@ -76,50 +66,31 @@ class User extends common
 
         if (mysqli_num_rows($res) > 0) {
 
-
-<<<<<<< HEAD
-            header('Location: /TimelessDials/index.php');
-            exit();
-        }else{
-=======
             session_start();
             $data = $this->retrieve();
             $this->cid = $data['cid'];
 
-            $_SESSION['email'] = $this->email;
-            $_SESSION['cid'] = $this->cid;
+            $_SESSION['email']= $this->email;
+            $_SESSION['cid']=$this->cid;
             // Set a cookie that lasts for 1 days
-            setcookie("email", $this->email, time() + (24 * 60 * 60), "/"); // expires in 1 day
-            setcookie("cid", $this->cid, time() + (24 * 60 *  60), "/"); // expires in 1 day
+            setcookie("email",$this->email, time() + ( 24 * 60 * 60), "/"); // expires in 1 day
+            setcookie("cid",$this->cid, time() + ( 24 * 60 *  60), "/"); // expires in 1 day
 
-
-            header('Location: /TimelessDials/index.php?Msg=' . urlencode("Login Successful"));
+            header('Location: /TimelessDials/index.php');
             exit();
-        } else {
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
-            header('Location: /TimelessDials/users/login.php?ErrMsg=' . urlencode("Incorrect Credentials"));
+        }else{
+            header('Location: /TimelessDials/user/login.php?ErrMsg=' . urlencode("Incorrect Credentials"));
             exit();
         }
     }
 
-<<<<<<< HEAD
-    public function edit(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
-=======
     public function edit()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
 
 
         $sql = "update customer set password ='$this->password',phone='$this->phone',address ='$this->address',city='$this->city' where cid='$this->cid'";
 
-<<<<<<< HEAD
-        if($res){
-            header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Details Updated"));
-            exit();
-        }else{
-=======
 
         $res = mysqli_query($conn, $sql);
 
@@ -127,20 +98,14 @@ class User extends common
             header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Details Updated"));
             exit();
         } else {
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
             header('Location: /TimelessDials/users/edit.php?Msg=' . urlencode("Failed to Update"));
             exit();
         }
     }
 
-<<<<<<< HEAD
-    public function delete(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
-=======
     public function delete()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
 
 
 
@@ -157,7 +122,6 @@ class User extends common
         }
 
 
-
         if ($res3) {
             session_start();
             session_unset();
@@ -166,26 +130,17 @@ class User extends common
             session_abort();
             setcookie('email', '', time() - 3600, '/');
             setcookie('cid', '', time() - 3600, '/');
-            header('Location: /TimelessDials/users/login.php?Msg=' . urlencode("Account deleted"));
+            header('Location: /TimelessDials/user/login.php?Msg=' . urlencode("Account deleted"));
             exit();
-<<<<<<< HEAD
-        }else{
-=======
         } else {
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
-            header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Failed to delete account"));
+            header('Location: /TimelessDials/user/profile.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
     }
     //this will be used by admin
-<<<<<<< HEAD
-    public function deleteCustomer(){
-        $conn  = new mysqli("localhost","root","","TimelessDials");
-=======
     public function deleteCustomer()
     {
         $conn  = new mysqli("localhost", "root", "", "TimelessDials");
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
 
 
 
@@ -214,11 +169,7 @@ class User extends common
 
             header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Account deleted"));
             exit();
-<<<<<<< HEAD
-        }else{
-=======
         } else {
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
             header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
@@ -237,12 +188,7 @@ class User extends common
         setcookie('email', '', time() - 3600, '/');
         setcookie('cid', '', time() - 3600, '/');
 
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> b8666ae1e420dbd256fac0010988ae2fc436b42d
-        header('Location: /TimelessDials/users/login.php?Msg=' . urlencode("Logout Successfully"));
+        header('Location: /TimelessDials/user/login.php?Msg=' . urlencode("Logout Successfully"));
         exit();
     }
 }

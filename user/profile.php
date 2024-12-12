@@ -30,6 +30,8 @@ include("./headerFooter/header.php")
             </div>
 
             <a href="#" class="btn">Edit Profile</a>
+            <a href="../backend/Controller/userOperations/logout.php" class="btn">Logout</a>
+            <a href="../backend/Controller/userOperations/deleteProcess.php" class="btn btn-primary">Delete</a>
         </div>
     </div>
 

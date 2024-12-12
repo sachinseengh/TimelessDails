@@ -21,54 +21,63 @@ include("headerFooter/header.php")
                         <div class="card-header">
                             <h4>Fill Watch Details</h4>
                         </div>
+
                         <div class="card-body">
-                            <div class="form-group">
-                                <label>Watch Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Brand</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select class="form-control selectric">
-                                    <option>Tech</option>
-                                    <option>News</option>
-                                    <option>Political</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Sub Category</label>
-                                <select class="form-control selectric">
-                                    <option>Tech</option>
-                                    <option>News</option>
-                                    <option>Political</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Watch Price</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Watch Image</label>
-                                <div id="image-preview" class="image-preview">
-                                    <label for="image-upload" id="image-label">Choose File</label>
-                                    <input type="file" name="image" id="image-upload" />
+                            <form action="/TimelessDials/backend/Controller/addProduct.php" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Watch Name</label>
+                                    <input type="text" name="name" class="form-control">
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label>Brand</label>
+                                    <input type="text" name="brand" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-control selectric" name="category">
+                                        <option>Male</option>
+                                        <option>Female</option>
 
-                            <div class="form-group">
-                                <label>Watch Description</label>
-                                <textarea class="summernote"></textarea>
-                            </div>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sub Category</label>
+                                    <select class="form-control selectric" name="sub_category">
+                                        <option>Mechanical Watche</option>
+                                        <option>Quartz Watche</option>
+                                        <option>Smartwatche</option>
+                                        <option>Hybrid Watche</option>
+                                    </select>
+                                </div>
 
-                            <div class="form-group">
-                                <button class="btn btn-primary">Add Watch</button>
-                            </div>
+                                <div class="form-group">
+                                    <label>Watch Price</label>
+                                    <input type="number" class="form-control" name="price">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" class="form-control" name="price">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Watch Image</label>
+                                    <div id="image-preview" class="image-preview">
+                                        <label for="image-upload" id="image-label">Choose File</label>
+                                        <input type="file" name="featured_img" id="image-upload" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Watch Description</label>
+                                    <textarea class="summernote" name="desc"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Add Watch</button>
+                                </div>
+                            </form>
 
                             <!-- <div class="col-sm-12 col-md-7">
                                       </div> -->

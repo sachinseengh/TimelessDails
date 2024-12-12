@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +30,7 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo">
+            <a href="../index.php" class="nav__logo">
                 <i class='bx bxs-watch nav__logo-icon'></i> Timeless Dials
             </a>
 
@@ -52,9 +58,28 @@
             <div class="nav__btns">
                 <!-- User -->
 
-                <a class="nav__shop user__nav" id="">
+
+
+
+                <!-- User button -->
+
+                   <!-- This is the button for user -->
+                   <?php if (isset($_SESSION['email'])): ?>
+                <a href="./user/profile.php" style="text-decoration:none">
+                    <div class="author-pic text-center mr-2 "
+                        style="background-color:grey; border-radius:50%; height:2rem; width:2rem; display:flex; align-items:center; justify-content:center;">
+                        <span style="font-size:1.3rem; color:white;">
+                            <?php echo htmlspecialchars(substr($_SESSION['email'], 0, 1)); ?>
+                        </span>
+                    </div>
+                </a>
+                <?php else: ?>
+                <a class="nav__shop user__nav" href="user/login.php">
                     <i class='bx bx-user-circle'></i>
                 </a>
+                <?php endif; ?>
+
+
                 <div class="nav__shop" id="cart-shop">
                     <i class='bx bx-shopping-bag'></i>
                 </div>

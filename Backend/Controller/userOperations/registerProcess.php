@@ -5,10 +5,6 @@ require_once('../class/user.class.php');
 
 $user = new User();
 
-print_r($user);
-
-
-echo $_POST['email'];
 
 $user->set('email', $_POST['email']);
 

@@ -12,7 +12,7 @@ class Admin extends common {
 
     public function retrieve(){
 
-        $conn  = new mysqli("localhost","root","","TimelessDails");
+        $conn  = new mysqli("localhost","root","","TimelessDials");
         $sql ="select * from admin where username ='$this->email'";
        
         $res = mysqli_query($conn,$sql);
@@ -26,7 +26,7 @@ class Admin extends common {
     }
    
     public function login(){
-        $conn  = new mysqli("localhost","root","","TimelessDails");
+        $conn  = new mysqli("localhost","root","","TimelessDials");
 
         $sql ="select * from admin where username = '$this->email' and password ='$this->password'";
         $res = mysqli_query($conn,$sql);
@@ -38,10 +38,10 @@ class Admin extends common {
           setcookie("username",$this->email, time() + (24 * 60 * 60), "/");
     
 
-            header('Location: /TimelessDails/dashboard/');
+            header('Location: /TimelessDials/admin/watches/index.php');
             exit();
         }else{
-            header('Location: /TimelessDails/users/adminlogin.php?ErrMsg=' . urlencode("Incorrect Credentials"));
+            header('Location: /TimelessDials/admin/index.php.php?ErrMsg=' . urlencode("Incorrect Credentials"));
             exit();
         }
     }
@@ -49,7 +49,7 @@ class Admin extends common {
     public function edit(){
 
     
-        $conn  = new mysqli("localhost","root","","TimelessDails");
+        $conn  = new mysqli("localhost","root","","TimelessDials");
 
         
         $sql ="update admin set password ='$this->password' where username='$this->email'";
@@ -58,17 +58,17 @@ class Admin extends common {
         $res = mysqli_query($conn,$sql);
 
         if($res){
-            header('Location: /TimelessDails/users/adminLogin.php?Msg=' . urlencode("Password Updated"));
+            header('Location: /TimelessDials/users/adminLogin.php?Msg=' . urlencode("Password Updated"));
             exit();
         }else{
-            header('Location: /TimelessDails/users/adminEdit.php?Msg=' . urlencode("Failed to Update"));
+            header('Location: /TimelessDials/users/adminEdit.php?Msg=' . urlencode("Failed to Update"));
             exit();
         }
 
     }
 
     public function delete(){
-        $conn  = new mysqli("localhost","root","","TimelessDails");
+        $conn  = new mysqli("localhost","root","","TimelessDials");
 
         
         $sql ="delete from customer where email='$this->email'";
@@ -77,16 +77,16 @@ class Admin extends common {
 
 
         if($res){
-            header('Location: /TimelessDails/users/login.php?Msg=' . urlencode("Account deleted"));
+            header('Location: /TimelessDials/users/login.php?Msg=' . urlencode("Account deleted"));
             exit();
         }else{
-            header('Location: /TimelessDails/users/profile.php?Msg=' . urlencode("Failed to delete account"));
+            header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
 
     }
     public function deleteCustomer(){
-        $conn  = new mysqli("localhost","root","","TimelessDails");
+        $conn  = new mysqli("localhost","root","","TimelessDials");
 
         
         $sql ="delete from customer where email='$this->email'";
@@ -95,10 +95,10 @@ class Admin extends common {
 
 
         if($res){
-            header('Location: /TimelessDails/dashboard/manage-customer.php?Msg=' . urlencode("Account deleted"));
+            header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Account deleted"));
             exit();
         }else{
-            header('Location: /TimelessDails/dashboard/manage-customer.php?Msg=' . urlencode("Failed to delete account"));
+            header('Location: /TimelessDials/dashboard/manage-customer.php?Msg=' . urlencode("Failed to delete account"));
             exit();
         }
 
