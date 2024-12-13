@@ -37,7 +37,7 @@ session_start();
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="../index.php" class="nav__link active-link">Home</a>
+                        <a href="index.php" class="nav__link active-link">Home</a>
                     </li>
                     <li class="nav__item">
                         <a href="#featured" class="nav__link">Featured</a>
@@ -55,29 +55,29 @@ session_start();
                 </div>
             </div>
 
+
+
+
             <div class="nav__btns">
                 <!-- User -->
 
 
-
-
-                <!-- User button -->
-
-                   <!-- This is the button for user -->
-                   <?php if (isset($_SESSION['email'])): ?>
-                <a href="./user/profile.php" style="text-decoration:none">
-                    <div class="author-pic text-center mr-2 "
-                        style="background-color:grey; border-radius:50%; height:2rem; width:2rem; display:flex; align-items:center; justify-content:center;">
-                        <span style="font-size:1.3rem; color:white;">
-                            <?php echo htmlspecialchars(substr($_SESSION['email'], 0, 1)); ?>
-                        </span>
-                    </div>
-                </a>
+                <!-- This is the button for user -->
+                <?php if (isset($_SESSION['email'])): ?>
+                    <a href="./user/profile.php" style="text-decoration:none">
+                        <div class="author-pic text-center mr-2">
+                            <span>
+                                <?php echo htmlspecialchars(substr($_SESSION['email'], 0, 1)); ?>
+                            </span>
+                        </div>
+                    </a>
                 <?php else: ?>
-                <a class="nav__shop user__nav" href="user/login.php">
-                    <i class='bx bx-user-circle'></i>
-                </a>
+                    <a class="nav__shop user__nav" href="./login.php">
+                        <i class='bx bx-user-circle'></i>
+                    </a>
                 <?php endif; ?>
+
+
 
 
                 <div class="nav__shop" id="cart-shop">
@@ -92,6 +92,20 @@ session_start();
     </header>
 
     <!--==================== CART ====================-->
+    <?php
+session_abort();
+session_start();
+
+if(!isset($_SESSION['email']) && !isset($_SESSION['cid'])): ?>
+    <div class="cart" id="cart">
+    <i class='bx bx-x cart__close' id="cart-close"></i>
+
+    <h2 class="cart__title-center">Please Login First to view your cart</h2>
+
+    <a href="./login.php" class="btn cart__checkout-button" >Login</a>
+
+</div>
+<?php else : ?>
     <div class="cart" id="cart">
         <i class='bx bx-x cart__close' id="cart-close"></i>
 
@@ -178,10 +192,16 @@ session_start();
                     </div>
                 </div>
             </article>
+
+
         </div>
 
         <div class="cart__prices">
             <span class="cart__prices-item">3 items</span>
             <span class="cart__prices-total">$2880</span>
         </div>
+
+        <button class="cart__checkout-button" id="checkout-btn">Proceed to Checkout</button>
+
     </div>
+    <?php endif; ?>

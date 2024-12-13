@@ -103,6 +103,36 @@ if ($message) {
 
 <!--=============== MAIN JS ===============-->
 <script src="assets/js/main.js"></script>
+
+<!-- js for ajax for updating cart -->
+ <script>
+function updateCart(action, cartId) {
+    const url = action === 'increase' 
+        ? `Backend/Controller/increaseCart.php?id=${cartId}` 
+        : `Backend/Controller/decreaseCart.php?id=${cartId}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Update the quantity for the specific item
+                const quantityElement = document.getElementById(`quantity-${cartId}`);
+                quantityElement.textContent = data.data.quantity;
+
+                // Update the total price and total items
+                const totalAmountElement = document.querySelector('.cart__prices-total');
+                const totalItemsElement = document.querySelector('.cart__prices-item');
+
+                totalAmountElement.textContent = `Rs. ${data.data.totalAmount}`;
+                totalItemsElement.textContent = `No of Items: ${data.data.totalItems}`;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+</script>
 </body>
 
 </html>

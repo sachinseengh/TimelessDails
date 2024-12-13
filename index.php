@@ -38,22 +38,18 @@ $products=$product->getProducts();
                     width=20>
             </div>
 
-
-
             <div class="home__data">
                 <h1 class="home__title">NEW WATCH <br><?php echo $mainItems[0]['name'] ?> </h1>
-                <p class="home__description">
-                    <?php echo htmlspecialchars_decode($mainItems[0]['description']) ?>
-                </p>
+              
                 <span class="home__price">Rs.<?php echo $mainItems[0]['price']?></span>
 
                 <div class="home__btns">
-                    <a href="single.php?<?php echo $mainItems[0]['pid'] ?>" class="button button--gray button--small">
+                    <a href="single.php?id=<?php echo $mainItems[0]['pid'] ?>" class="button button--gray button--small">
                         Details
                     </a>
 
                     <a class="btn button home__button" onClick=openCart()
-                        href="Backend/Controller/addCart.php?id=<?php echo $mainItems[0]['pid'] ?>">ADD TO CART</a>
+                        href="Backend/Controller/addCart.php?id=<?php echo $mainItems[0]['pid'] ?>&price=<?php echo $mainItems[0]['price']?>">ADD TO CART</a>
 
 
 
@@ -85,8 +81,8 @@ $products=$product->getProducts();
 
                 <a class="button featured__button" href="single.php?id=<?php echo $items['pid']?>">View Watch</a>
 
-                <a class="button featured__button"
-                    href="Backend/Controller/addCart.php?id=<?php echo $items['pid']?>">ADD TO CART</a>
+                <a class="btn button home__button" onClick=openCart()
+                href="Backend/Controller/addCart.php?id=<?php echo $items['pid'] ?>&price=<?php echo $items['price']?>">ADD TO CART</a>
             </article>
             <?php } ?>
 
@@ -141,10 +137,13 @@ $products=$product->getProducts();
                     <span class="featured__price">Rs.<?php echo $item['price']?></span>
                 </div>
 
-                <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
+                <a class="button featured__button"
+                    href="./single.php?<?php echo http_build_query(['id' => $item['pid']]); ?>">View Watch</a>
+
 
                 <a class="button featured__button"
-                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>&price=<?php echo $item['price'] ?>">ADD
+                    TO CART</a>
             </article>
             <?php } ?>
         </div>
@@ -239,7 +238,7 @@ $products=$product->getProducts();
 
     <!--==================== Male section ====================-->
     <section class="male section container" id="male">
-    <h2 class="section__title">
+        <h2 class="section__title">
             Male Watches
         </h2>
 
@@ -260,7 +259,9 @@ $products=$product->getProducts();
                 <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
 
                 <a class="button featured__button"
-                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']; ?>&price=<?php echo $item['price']; ?>">ADD
+                    TO CART</a>
+
             </article>
             <?php } ?>
         </div>
@@ -271,7 +272,7 @@ $products=$product->getProducts();
     <!-- Female Section -->
 
     <section class="female section container" id="female">
-    <h2 class="section__title">
+        <h2 class="section__title">
             Female Watches
         </h2>
 
@@ -292,7 +293,8 @@ $products=$product->getProducts();
                 <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
 
                 <a class="button featured__button"
-                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid'];?>&price=<?php echo $item['price'];?>">ADD
+                    TO CART</a>
             </article>
             <?php } ?>
         </div>

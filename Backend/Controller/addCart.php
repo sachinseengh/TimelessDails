@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['email']) && !isset($_SESSION['cid'])){
 
-    header('Location:user/login.php?Msg=Please Login First');
+    header('Location:../../user/login.php?Msg=Please Login First');
     exit();
   
   }
