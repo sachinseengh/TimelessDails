@@ -12,7 +12,15 @@ if(isset($_COOKIE['email'])){
 include 'Backend/Controller/class/product.class.php';
 
 $product = new Product();
-$items= $product->getProductMain();
+
+$mainItems= $product->getProductMain();
+
+$newItems=$product->getNewArrival();
+$maleItems=$product->getProductsMale();
+$femaleItems=$product->getProductsFemale();
+$products=$product->getProductsAll();
+
+
 ?>
 
 <!--==================== MAIN ====================-->
@@ -23,25 +31,25 @@ $items= $product->getProductMain();
   
         <div class="home__container container grid">
             <div class="home__img-bg home__org">
-                <img src="Backend/images/<?php echo $items[0]['featured_img'] ?>" alt="" class="home__img"
+                <img src="Backend/images/<?php echo $mainItems[0]['featured_img'] ?>" alt="" class="home__img"
                 height=20 width=20>
             </div>
             
 
 
             <div class="home__data">
-                <h1 class="home__title">NEW WATCH <br><?php echo $items[0]['name'] ?> </h1>
+                <h1 class="home__title">NEW WATCH <br><?php echo $mainItems[0]['name'] ?> </h1>
                 <p class="home__description">
-                <?php echo htmlspecialchars_decode($items[0]['description']) ?>
+                <?php echo htmlspecialchars_decode($mainItems[0]['description']) ?>
                 </p>
-                <span class="home__price">Rs.<?php echo $items[0]['price']?></span>
+                <span class="home__price">Rs.<?php echo $mainItems[0]['price']?></span>
 
                 <div class="home__btns">
-                    <a href="single.php?<?php echo $items[0]['pid'] ?>" class="button button--gray button--small">
+                    <a href="single.php?<?php echo $mainItems[0]['pid'] ?>" class="button button--gray button--small">
                         Details
                     </a>
 
-                    <a class="btn button home__button" onClick=openCart() href="Backend/Controller/addCart.php?id=<?php echo $items[0]['pid'] ?>">ADD TO CART</a>
+                    <a class="btn button home__button" onClick=openCart() href="Backend/Controller/addCart.php?id=<?php echo $mainItems[0]['pid'] ?>">ADD TO CART</a>
 
   
                 
@@ -50,49 +58,32 @@ $items= $product->getProductMain();
         </div>
     </section>
 
-    <!--==================== FEATURED ====================-->
+    <!--==================== New arrival====================-->
     <section class="featured section container" id="featured">
         <h2 class="section__title">
-            Featured
+            New Arrival
         </h2>
 
         <div class="featured__container grid">
-            <article class="featured__card">
-                <span class="featured__tag">Sale</span>
 
-                <img src="assets/img/featured1.png" alt="" class="featured__img">
+
+        <?php foreach($newItems as $items){?>
+            <article class="featured__card">
+                <span class="featured__tag">New</span>
+
+                <img src="./Backend/images/<?php echo $items['featured_img'] ?>" alt="" class="featured__img">
 
                 <div class="featured__data">
-                    <h3 class="featured__title">Jazzmaster</h3>
-                    <span class="featured__price">$1050</span>
+                    <h3 class="featured__title"><?php echo $items['name'] ?></h3>
+                    <h3 class="featured__brand"><?php echo $items['brand'] ?></h3>
+                    <span class="featured__price">Rs.<?php echo $items['price']?></span>
                 </div>
 
-                <a class="button featured__button" href="single.php">ADD TO CART</a>
+                <a class="button featured__button" href="single.php>id=<?php echo $items['pid']?>">View Watch</a>
+                
+                <a class="button featured__button" href="Backend/Controller/addCart.php?id=<?php echo $items['pid']?>">ADD TO CART</a>
             </article>
-            <article class="featured__card">
-                <span class="featured__tag">Sale</span>
-
-                <img src="assets/img/featured1.png" alt="" class="featured__img">
-
-                <div class="featured__data">
-                    <h3 class="featured__title">Jazzmaster</h3>
-                    <span class="featured__price">$1050</span>
-                </div>
-
-                <a class="button featured__button" href="single.php">ADD TO CART</a>
-            </article>
-            <article class="featured__card">
-                <span class="featured__tag">Sale</span>
-
-                <img src="assets/img/featured1.png" alt="" class="featured__img">
-
-                <div class="featured__data">
-                    <h3 class="featured__title">Jazzmaster</h3>
-                    <span class="featured__price">$1050</span>
-                </div>
-
-                <a class="button featured__button" href="single.php">ADD TO CART</a>
-            </article>
+            <?php } ?>
 
 
         </div>
@@ -132,61 +123,28 @@ $items= $product->getProductMain();
         </h2>
 
         <div class="products__container grid">
-            <article class="products__card">
-                <img src="assets/img/product1.png" alt="" class="products__img">
+        <?php foreach($products as $item){?>
+            
+            <article class="featured__card">
+              
 
-                <h3 class="products__title">Spirit rose</h3>
-                <span class="products__price">$1500</span>
+                <img src="./Backend/images/<?php echo $item['featured_img'] ?>" alt="" class="featured__img">
 
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
+                <div class="featured__data">
+                    <h3 class="featured__title"><?php echo $item['name'] ?></h3>
+                    <h3 class="featured__brand"><?php echo $item['brand'] ?></h3>
+                    <span class="featured__price">Rs.<?php echo $item['price']?></span>
+                </div>
+
+                <a class="button featured__button" href="single.php>id=<?php echo $item['pid']?>">View Watch</a>
+                
+                <a class="button featured__button" href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
             </article>
+            <?php } ?>
+            </div>
 
-            <article class="products__card">
-                <img src="assets/img/product2.png" alt="" class="products__img">
-
-                <h3 class="products__title">Khaki pilot</h3>
-                <span class="products__price">$1350</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-
-            <article class="products__card">
-                <img src="assets/img/product3.png" alt="" class="products__img">
-
-                <h3 class="products__title">Jubilee black</h3>
-                <span class="products__price">$870</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-
-            <article class="products__card">
-                <img src="assets/img/product4.png" alt="" class="products__img">
-
-                <h3 class="products__title">Fosil me3</h3>
-                <span class="products__price">$650</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-
-            <article class="products__card">
-                <img src="assets/img/product5.png" alt="" class="products__img">
-
-                <h3 class="products__title">Duchen</h3>
-                <span class="products__price">$950</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-        </div>
+           
+       
     </section>
 
     <!--==================== TESTIMONIAL ====================-->
@@ -276,12 +234,14 @@ $items= $product->getProductMain();
     <!--==================== NEW ====================-->
     <section class="new section container" id="new">
         <h2 class="section__title">
-            New Arrivals
+            Male Watches
         </h2>
 
         <div class="new__container">
             <div class="swiper new-swiper">
                 <div class="swiper-wrapper">
+
+                <?php foreach($maleItems as $items){?>
                     <article class="new__card swiper-slide">
                         <span class="new__tag">New</span>
 
@@ -294,45 +254,9 @@ $items= $product->getProductMain();
 
                         <button class="button new__button">ADD TO CART</button>
                     </article>
+                    <?php } ?>
 
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="assets/img/new2.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">Jazzmaster</h3>
-                            <span class="new__price">$1150</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="assets/img/new3.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">Dreyfuss gold</h3>
-                            <span class="new__price">$750</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="assets/img/new4.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">Portuguese rose</h3>
-                            <span class="new__price">$1590</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
+                  
                 </div>
             </div>
         </div>

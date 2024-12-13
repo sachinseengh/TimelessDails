@@ -69,10 +69,10 @@ class Product extends common{
         }
     }
 
-    public function getProducts(){
+    public function getProductsAll(){
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
-        $sql = "select * from product order by pid desc limit 3";
+        $sql = "select * from product order by pid desc limit 20";
     
         $var = mysqli_query($conn,$sql);
         if ($var->num_rows > 0) {
@@ -85,7 +85,7 @@ class Product extends common{
     public function getNewArrival(){
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
-        $sql = "select * from product order by pid desc limit 4";
+        $sql = "select * from product order by pid desc limit 3";
     
         $var = mysqli_query($conn,$sql);
         if ($var->num_rows > 0) {
