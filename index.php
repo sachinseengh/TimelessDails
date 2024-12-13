@@ -21,6 +21,9 @@ $femaleItems=$product->getProductsFemale();
 $products=$product->getProducts();
 
 
+
+
+
 ?>
 
 <!--==================== MAIN ====================-->
@@ -28,19 +31,19 @@ $products=$product->getProducts();
     <!--==================== HOME ====================-->
     <section class="home" id="home">
 
-  
+
         <div class="home__container container grid">
             <div class="home__img-bg home__org">
-                <img src="Backend/images/<?php echo $mainItems[0]['featured_img'] ?>" alt="" class="home__img"
-                height=20 width=20>
+                <img src="Backend/images/<?php echo $mainItems[0]['featured_img'] ?>" alt="" class="home__img" height=20
+                    width=20>
             </div>
-            
+
 
 
             <div class="home__data">
                 <h1 class="home__title">NEW WATCH <br><?php echo $mainItems[0]['name'] ?> </h1>
                 <p class="home__description">
-                <?php echo htmlspecialchars_decode($mainItems[0]['description']) ?>
+                    <?php echo htmlspecialchars_decode($mainItems[0]['description']) ?>
                 </p>
                 <span class="home__price">Rs.<?php echo $mainItems[0]['price']?></span>
 
@@ -49,10 +52,11 @@ $products=$product->getProducts();
                         Details
                     </a>
 
-                    <a class="btn button home__button" onClick=openCart() href="Backend/Controller/addCart.php?id=<?php echo $mainItems[0]['pid'] ?>">ADD TO CART</a>
+                    <a class="btn button home__button" onClick=openCart()
+                        href="Backend/Controller/addCart.php?id=<?php echo $mainItems[0]['pid'] ?>">ADD TO CART</a>
 
-  
-                
+
+
                 </div>
             </div>
         </div>
@@ -67,7 +71,7 @@ $products=$product->getProducts();
         <div class="featured__container grid">
 
 
-        <?php foreach($newItems as $items){?>
+            <?php foreach($newItems as $items){?>
             <article class="featured__card">
                 <span class="featured__tag">New</span>
 
@@ -79,9 +83,10 @@ $products=$product->getProducts();
                     <span class="featured__price">Rs.<?php echo $items['price']?></span>
                 </div>
 
-                <a class="button featured__button" href="single.php>id=<?php echo $items['pid']?>">View Watch</a>
-                
-                <a class="button featured__button" href="Backend/Controller/addCart.php?id=<?php echo $items['pid']?>">ADD TO CART</a>
+                <a class="button featured__button" href="single.php?id=<?php echo $items['pid']?>">View Watch</a>
+
+                <a class="button featured__button"
+                    href="Backend/Controller/addCart.php?id=<?php echo $items['pid']?>">ADD TO CART</a>
             </article>
             <?php } ?>
 
@@ -123,10 +128,10 @@ $products=$product->getProducts();
         </h2>
 
         <div class="products__container grid">
-        <?php foreach($products as $item){?>
-            
+            <?php foreach($products as $item){?>
+
             <article class="featured__card">
-              
+
 
                 <img src="./Backend/images/<?php echo $item['featured_img'] ?>" alt="" class="featured__img">
 
@@ -136,15 +141,16 @@ $products=$product->getProducts();
                     <span class="featured__price">Rs.<?php echo $item['price']?></span>
                 </div>
 
-                <a class="button featured__button" href="single.php>id=<?php echo $item['pid']?>">View Watch</a>
-                
-                <a class="button featured__button" href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+                <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
+
+                <a class="button featured__button"
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
             </article>
             <?php } ?>
-            </div>
+        </div>
 
-           
-       
+
+
     </section>
 
     <!--==================== TESTIMONIAL ====================-->
@@ -231,39 +237,73 @@ $products=$product->getProducts();
         </div>
     </section>
 
-    <!--==================== NEW ====================-->
-    <section class="new section container" id="new">
-        <h2 class="section__title">
+    <!--==================== Male section ====================-->
+    <section class="male section container" id="male">
+    <h2 class="section__title">
             Male Watches
         </h2>
 
-        <div class="new__container">
-            <div class="swiper new-swiper">
-                <div class="swiper-wrapper">
+        <div class="products__container grid">
+            <?php foreach($maleItems as $item){?>
 
-                <?php foreach($maleItems as $items){?>
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
+            <article class="featured__card">
 
-                        <img src="assets/img/new1.png" alt="" class="new__img">
 
-                        <div class="new__data">
-                            <h3 class="new__title">Longines rose</h3>
-                            <span class="new__price">$980</span>
-                        </div>
+                <img src="./Backend/images/<?php echo $item['featured_img'] ?>" alt="" class="featured__img">
 
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-                    <?php } ?>
-
-                  
+                <div class="featured__data">
+                    <h3 class="featured__title"><?php echo $item['name'] ?></h3>
+                    <h3 class="featured__brand"><?php echo $item['brand'] ?></h3>
+                    <span class="featured__price">Rs.<?php echo $item['price']?></span>
                 </div>
-            </div>
+
+                <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
+
+                <a class="button featured__button"
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+            </article>
+            <?php } ?>
         </div>
+
     </section>
 
-    <!--==================== NEWSLETTER ====================-->
-    <section class="newsletter section container">
+
+    <!-- Female Section -->
+
+    <section class="female section container" id="female">
+    <h2 class="section__title">
+            Female Watches
+        </h2>
+
+        <div class="products__container grid">
+            <?php foreach($femaleItems as $item){?>
+
+            <article class="featured__card">
+
+
+                <img src="./Backend/images/<?php echo $item['featured_img'] ?>" alt="" class="featured__img">
+
+                <div class="featured__data">
+                    <h3 class="featured__title"><?php echo $item['name'] ?></h3>
+                    <h3 class="featured__brand"><?php echo $item['brand'] ?></h3>
+                    <span class="featured__price">Rs.<?php echo $item['price']?></span>
+                </div>
+
+                <a class="button featured__button" href="single.php?id=<?php echo $item['pid']?>">View Watch</a>
+
+                <a class="button featured__button"
+                    href="Backend/Controller/addCart.php?id=<?php echo $item['pid']?>">ADD TO CART</a>
+            </article>
+            <?php } ?>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ==================== NEWSLETTER ==================== -->
+    <!-- <section class="newsletter section container">
         <div class="newsletter__bg grid">
             <div>
                 <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
@@ -281,7 +321,7 @@ $products=$product->getProducts();
                 </button>
             </form>
         </div>
-    </section>
+    </section> -->
 </main>
 
 <!--==================== FOOTER ====================-->
