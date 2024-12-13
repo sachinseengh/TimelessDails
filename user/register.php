@@ -44,7 +44,7 @@ include("./headerFooter/header.php")
 
                     <div class="form-group">
                         <label for="number" class="form-label">Phone Number</label>
-                        <input type="number" id="number" name="number" class="form-input"
+                        <input type="number" id="phone" name="phone" class="form-input"
                             placeholder="Enter your number" required>
                     </div>
 

@@ -14,6 +14,7 @@ class User extends common
         $sql = "insert into customer(email,password,name,phone,city,address) values('$this->email','$this->password','$this->name','$this->phone','$this->city','$this->address')";
 
 
+        
         $res = mysqli_query($conn, $sql);
 
         if ($res) {
@@ -95,10 +96,10 @@ class User extends common
         $res = mysqli_query($conn, $sql);
 
         if ($res) {
-            header('Location: /TimelessDials/users/profile.php?Msg=' . urlencode("Details Updated"));
+            header('Location: /TimelessDials/user/profile.php?Msg=' . urlencode("Details Updated"));
             exit();
         } else {
-            header('Location: /TimelessDials/users/edit.php?Msg=' . urlencode("Failed to Update"));
+            header('Location: /TimelessDials/user/editProfile.php?Msg=' . urlencode("Failed to Update"));
             exit();
         }
     }

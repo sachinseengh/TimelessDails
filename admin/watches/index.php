@@ -1,5 +1,15 @@
 <?php
-include("headerFooter/header.php")
+include("headerFooter/header.php");
+
+
+require_once('../../Backend/Controller/class/product.class.php');
+
+
+$product  = new Product();
+
+$watches=$product->getTotalWatch();
+$totalWatches=$product->getTotalWatchQuantity();
+
 ?>
 
 
@@ -20,7 +30,7 @@ include("headerFooter/header.php")
               <h4>Total Admin</h4>
             </div>
             <div class="card-body">
-              10
+              1
             </div>
           </div>
         </div>
@@ -32,10 +42,13 @@ include("headerFooter/header.php")
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Watch</h4>
+              <h4>Watches</h4>
             </div>
             <div class="card-body">
-              42
+            <?php
+              
+              echo ($watches->total_Watch);
+                            ?>
             </div>
           </div>
         </div>
@@ -47,15 +60,19 @@ include("headerFooter/header.php")
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Reports</h4>
+              <h4>Total Watches </h4>
             </div>
             <div class="card-body">
-              1,201
+            <?php
+              
+              // print_r($totalWatches);
+              echo ($totalWatches->quantity);
+                            ?>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+      <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-success">
             <i class="fas fa-circle"></i>
@@ -69,7 +86,7 @@ include("headerFooter/header.php")
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </div>

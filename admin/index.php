@@ -1,3 +1,17 @@
+
+<?php 
+
+session_start();
+
+if(isset($_COOKIE['username'])){
+    header('Location:./watches/index.php');
+    exit();
+
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

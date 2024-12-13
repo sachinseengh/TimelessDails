@@ -1,5 +1,17 @@
 <?php
-include("headerFooter/header.php")
+include("headerFooter/header.php");
+require_once('../../Backend/Controller/class/admin.class.php');
+
+$admin = new Admin();
+
+
+$admin->set('username',$_COOKIE['username']);
+$data = $admin->retrieve();
+
+
+
+
+
 ?>
 
 
@@ -23,11 +35,13 @@ include("headerFooter/header.php")
                         </div> -->
 
                         <div class="card-body">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="../../Backend/Controller/adminOperations/editProcess.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control" disabled>
+                                    <input type="email" name="email" value=<?php echo $data['username'] ?>  class="form-control" disabled>
                                 </div>
+                                
+                          
 
                                 <div class="form-group">
                                     <label>New Password</label>

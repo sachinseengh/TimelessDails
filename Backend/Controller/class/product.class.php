@@ -157,6 +157,36 @@ class Product extends common
         }
     }
 
+
+    public function getTotalWatch()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+
+        $sql = "select count(*) as total_Watch from product";
+
+        $var = mysqli_query($conn, $sql);
+        if ($var) {
+            $datalist = $var->fetch_object();
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+    public function getTotalWatchQuantity()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+
+        $sql = "select SUM(quantity)  as quantity from product  ";
+
+        $var = mysqli_query($conn, $sql);
+        if ($var) {
+            $datalist = $var->fetch_object();
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+
     public function Delete()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');

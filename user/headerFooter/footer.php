@@ -1,4 +1,3 @@
-<!--==================== FOOTER ====================-->
 <footer class="footer section">
     <div class="footer__container container grid">
         <div class="footer__content">
@@ -34,7 +33,7 @@
 
             <ul class="footer__links">
                 <li>
-                    <a href="#" class="footer__link">Road bikes</a>
+                    <a href="#" class="footer__link">Sports Watch</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">Mountain bikes</a>
@@ -78,9 +77,8 @@
 <!--=============== SWIPER JS ===============-->
 <script src="assets/js/swiper-bundle.min.js"></script>
 
-
-<!-- SweetAlert CSS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!--==================== MESSAGE HANDLER ====================-->
 <?php
 // Fetch the message or error message from URL
@@ -103,59 +101,80 @@ if ($message) {
 }
 ?>
 
-<script>
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent the default action (navigation)
-
-            const deleteUrl = this.getAttribute('data-href'); // Get the URL from data-href
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Redirect to the delete URL
-                    window.location.href = deleteUrl;
-                }
-            });
-        });
-    });
-
-    document.querySelectorAll('.logout-btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent the default action (navigation)
-
-            const logoutUrl = this.getAttribute('data-href'); // Get the URL from data-href
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You have to login again to shop!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, logout!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Redirect to the delete URL
-                    window.location.href = logoutUrl;
-                }
-            });
-        });
-    });
-</script>
-
-
 <!--=============== MAIN JS ===============-->
-<script src="../assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- js for ajax for updating cart -->
+ <script>
+function updateCart(action, cartId) {
+    const url = action === 'increase' 
+        ? `Backend/Controller/increaseCart.php?id=${cartId}` 
+        : `Backend/Controller/decreaseCart.php?id=${cartId}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Update the quantity for the specific item
+                const quantityElement = document.getElementById(`quantity-${cartId}`);
+                quantityElement.textContent = data.data.quantity;
+
+                // Update the total price and total items
+                const totalAmountElement = document.querySelector('.cart__prices-total');
+                const totalItemsElement = document.querySelector('.cart__prices-item');
+
+                totalAmountElement.textContent = `Rs. ${data.data.totalAmount}`;
+                totalItemsElement.textContent = `No of Items: ${data.data.totalItems}`;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 
+
+
+//uta ko le cart dekhaena
+/*=============== SHOW CART ===============*/
+const cart = document.getElementById("cart"),
+  cartShop = document.getElementById("cart-shop"),
+  cartClose = document.getElementById("cart-close");
+
+
+  
+
+/*===== CART SHOW =====*/
+/* Validate if constant exists */
+if (cartShop) {
+    
+  cartShop.addEventListener("click", () => {
+    cart.classList.add("show-cart");
+  });
+}
+
+/*===== CART HIDDEN =====*/
+/* Validate if constant exists */
+if (cartClose) {
+  cartClose.addEventListener("click", () => {
+    cart.classList.remove("show-cart");
+  });
+}
+
+
+const openCart=()=>{
+      cart.classList.add("show-cart");
+  
+}
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const action = urlParams.get('action');
+  if (action === 'openCart') {
+      openCart();
+  }
+}
+
+</script>
 
 </body>
 

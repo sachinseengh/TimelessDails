@@ -6,11 +6,24 @@ session_start();
 include 'backend/Controller/class/cart.class.php';
 
 $cart = new Cart();
-$cart->set('cid',$_SESSION['cid']);
+if(isset($_COOKIE['cid'])){
 
+    if(isset($_COOKIE['cid'] ) && isset($_COOKIE['email'])){
+
+        $_SESSION['cid']= $_COOKIE['cid'];
+        $_SESSION['email']= $_COOKIE['email'];
+
+    }
+
+
+$cart->set('cid',$_COOKIE['cid']);
 $items = $cart->retrieve();
 $total = $cart->totalAmount();
 $totalItem=$cart->totalItem();
+
+}
+
+
 
 ?>
 
@@ -78,7 +91,7 @@ $totalItem=$cart->totalItem();
                 <a href="./user/profile.php" style="text-decoration:none">
                     <div class="author-pic text-center mr-2">
                         <span>
-                            <?php echo htmlspecialchars(substr($_SESSION['email'], 0, 1)); ?>
+                            <?php echo htmlspecialchars(substr($_COOKIE['email'], 0, 1)); ?>
                         </span>
                     </div>
                 </a>
@@ -107,7 +120,7 @@ $totalItem=$cart->totalItem();
 session_abort();
 session_start();
 
-if(!isset($_SESSION['email']) && !isset($_SESSION['cid'])): ?>
+if(!isset($_COOKIE['email']) && !isset($_COOKIE['cid'])): ?>
     <div class="cart" id="cart">
         <i class='bx bx-x cart__close' id="cart-close"></i>
 
