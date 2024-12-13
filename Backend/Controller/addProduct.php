@@ -1,8 +1,10 @@
 <?php
 
-require_once('./class/Product.class.php');
+require_once('./class/product.class.php');
 
 $product = new Product();
+
+
 
 // Set product details
 $product->set('name', $_POST['name']);
@@ -11,13 +13,14 @@ $product->set('brand', $_POST['brand']);
 $product->set('desc', $_POST['desc']);
 $product->set('category', $_POST['category']);
 $product->set('sub_category', $_POST['sub_category']);
-$product->set('quantity',$_POST['quantity']);
+$product->set('quantity', $_POST['quantity']);
 
 
 
 
 // Function to handle file uploads
-function handleFileUpload($file, $fieldName, $product) {
+function handleFileUpload($file, $fieldName, $product)
+{
     if ($file['error'] == 0) {
         // Define the allowed file types
         $allowedTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'];
@@ -70,5 +73,3 @@ foreach ($imageErrors as $error) {
         echo $error;
     }
 }
-
-?>

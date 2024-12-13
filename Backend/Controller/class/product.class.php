@@ -1,7 +1,7 @@
 <?php
 
-require_once('product.class.php');
-require_once('common.class.php');
+require_once 'product.class.php';
+require_once 'common.class.php';
 
 
 class Product extends common
@@ -10,20 +10,20 @@ class Product extends common
     public $pid, $name, $brand, $price, $desc, $category, $sub_category, $featured_img, $quantity;
 
 
-    public function Save()
-    {
-        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+    public function Save(){
+    $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
 
         $sql = "insert into product (name,price,brand,description,category,sub_category,featured_img,quantity) values('$this->name','$this->price','$this->brand','$this->desc','$this->category','$this->sub_category','$this->featured_img','$this->quantity')";
 
-        $res = mysqli_query($conn, $sql);
-        if ($res) {
-            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Added Successfully"');
-            exit();
-        } else {
-            header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to add Product"');
-            exit();
-        }
+    $res = mysqli_query($conn,$sql);
+    if($res){
+        header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Added Successfully"');
+        exit();
+    }else{
+        header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to add Product"');
+        exit();
+    }
+
     }
 
     public function retrieve()
