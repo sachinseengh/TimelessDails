@@ -28,8 +28,32 @@
 <!-- Image Preview -->
 <script src="assets/js/page/features-post-create.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Template JS File -->
+<?php
+// Fetch the message or error message from URL
+$message = isset($_GET['msg']) ? $_GET['msg'] : (isset($_GET['ErrMsg']) ? $_GET['ErrMsg'] : '');
+$type = isset($_GET['ErrMsg']) ? 'error' : 'success'; // Set type based on presence of ErrMsg
+
+if ($message) {
+    // Escape the message to prevent XSS
+    $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            text: '$message',
+            icon: '$type', // Set the icon dynamically (success or error)
+            timer: 3000, // 3 seconds
+            showConfirmButton: false,
+            position: 'top-end', // Positioning at the top right
+            toast: true // Enables toast style
+        });
+    });
+</script>";
+}
+?>
+
+
 <script src="assets/js/scripts.js"></script>
 <script src="assets/js/custom.js"></script>
 </body>
@@ -39,23 +63,20 @@
 
 
 <script>
-function handleImageSelection(event) {
-    const fileInput = event.target;
-    const oldImagePreview = document.getElementById('old-image-preview');
-    const existingImgInput = document.getElementById('existing_img');
-    const file = fileInput.files[0];
+    function handleImageSelection(event) {
+        const fileInput = event.target;
+        const oldImagePreview = document.getElementById('old-image-preview');
+        const existingImgInput = document.getElementById('existing_img');
+        const file = fileInput.files[0];
 
-    // If a new file is selected, hide the old image and clear the existing image input
-    if (file) {
-        oldImagePreview.style.display = 'none'; // Hide the old image
-        existingImgInput.value = ''; // Clear the existing image name
-    } else {
-        // If no file is selected, show the old image
-        oldImagePreview.style.display = 'block'; // Show the old image
-        existingImgInput.value = "<?php echo $item->featured_img; ?>"; // Set the existing image name
+        // If a new file is selected, hide the old image and clear the existing image input
+        if (file) {
+            oldImagePreview.style.display = 'none'; // Hide the old image
+            existingImgInput.value = ''; // Clear the existing image name
+        } else {
+            // If no file is selected, show the old image
+            oldImagePreview.style.display = 'block'; // Show the old image
+            existingImgInput.value = "<?php echo $item->featured_img; ?>"; // Set the existing image name
+        }
     }
-}
-
-
-
 </script>
