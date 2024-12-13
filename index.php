@@ -18,7 +18,7 @@ $mainItems= $product->getProductMain();
 $newItems=$product->getNewArrival();
 $maleItems=$product->getProductsMale();
 $femaleItems=$product->getProductsFemale();
-$products=$product->getProductsAll();
+$products=$product->getProducts();
 
 
 ?>
