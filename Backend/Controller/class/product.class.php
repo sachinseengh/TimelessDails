@@ -12,16 +12,16 @@ class Product extends common
 
     public function Save()
     {
-        $conn = mysqli_connect('localhost', 'root', '', 'timelessdials');
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
 
         $sql = "insert into product (name,price,brand,description,category,sub_category,featured_img,quantity) values('$this->name','$this->price','$this->brand','$this->desc','$this->category','$this->sub_category','$this->featured_img','$this->quantity')";
 
         $res = mysqli_query($conn, $sql);
         if ($res) {
-            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg=Product Added Successfully');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Added Successfully"');
             exit();
         } else {
-            header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg=Failed to add Product');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to add Product"');
             exit();
         }
     }
