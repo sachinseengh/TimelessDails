@@ -1,31 +1,50 @@
 <?php
-include("headerFooter/header.php")
+include("headerFooter/header.php");
+
+
+if(isset($_COOKIE['email'])){
+    
+    $_SESSION['email'] = $_COOKIE['email'];
+    $_SESSION['cid'] = $_COOKIE['cid'];
+
+}
+
+include 'Backend/Controller/class/product.class.php';
+
+$product = new Product();
+$items= $product->getProductMain();
 ?>
 
 <!--==================== MAIN ====================-->
 <main class="main">
     <!--==================== HOME ====================-->
     <section class="home" id="home">
+
+  
         <div class="home__container container grid">
             <div class="home__img-bg home__org">
-                <img src="assets/img/home.png" alt="" class="home__img">
+                <img src="Backend/images/<?php echo $items[0]['featured_img'] ?>" alt="" class="home__img"
+                height=20 width=20>
             </div>
+            
 
 
             <div class="home__data">
-                <h1 class="home__title">NEW WATCH <br> COLLECTIONS B720</h1>
+                <h1 class="home__title">NEW WATCH <br><?php echo $items[0]['name'] ?> </h1>
                 <p class="home__description">
-                    Latest arrival of the new imported watches of the B720 series,
-                    with a modern and resistant design.
+                <?php echo htmlspecialchars_decode($items[0]['description']) ?>
                 </p>
-                <span class="home__price">$1245</span>
+                <span class="home__price">Rs.<?php echo $items[0]['price']?></span>
 
                 <div class="home__btns">
-                    <a href="#" class="button button--gray button--small">
-                        Discover
+                    <a href="single.php?<?php echo $items[0]['pid'] ?>" class="button button--gray button--small">
+                        Details
                     </a>
 
-                    <button class="button home__button">ADD TO CART</button>
+                    <a class="btn button home__button" onClick=openCart() href="Backend/Controller/addCart.php?id=<?php echo $items[0]['pid'] ?>">ADD TO CART</a>
+
+  
+                
                 </div>
             </div>
         </div>

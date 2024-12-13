@@ -3,9 +3,7 @@ session_start();
 
 if(!isset($_SESSION['email']) && !isset($_SESSION['cid'])){
 
-    header('Location:../../users/login.php?Msg=Please Login First');
-  
-  
+    header('Location:user/login.php?Msg=Please Login First');
     exit();
   
   }
@@ -13,7 +11,12 @@ if(!isset($_SESSION['email']) && !isset($_SESSION['cid'])){
 require_once ('./class/cart.class.php');
 
 $id= $_GET['id'];
+
+if(isset($_GET['quantity'])){
 $quantity = $_GET['quantity'];
+}else{
+  $quantity=1;
+}
 
 
 

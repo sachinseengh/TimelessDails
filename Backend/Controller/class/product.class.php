@@ -45,9 +45,6 @@ class Product extends common{
     
         $sql ="update product set name ='$this->name',price ='$this->price',description='$this->desc',category='$this->category',sub_category='$this->sub_category',featured_img='$this->featured_img',brand='$this->brand',quantity='$this->quantity' where pid='$this->pid'";
 
-        
-          
-     
         $res = mysqli_query($conn,$sql);
         if($res){
             header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Edited Successfully"');
@@ -75,7 +72,7 @@ class Product extends common{
     public function getProducts(){
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
-        $sql = "select * from product order by pid desc limit 12";
+        $sql = "select * from product order by pid desc limit 3";
     
         $var = mysqli_query($conn,$sql);
         if ($var->num_rows > 0) {
@@ -85,10 +82,49 @@ class Product extends common{
             return false;
         }
     }
-    public function getProductsMen(){
+    public function getNewArrival(){
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
      
-        $sql = "select * from product where category='men' order by pid desc limit 3";
+        $sql = "select * from product order by pid desc limit 4";
+    
+        $var = mysqli_query($conn,$sql);
+        if ($var->num_rows > 0) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+    public function getProductMain(){
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+     
+        $sql = "select * from product order by pid desc limit 1";
+    
+        $var = mysqli_query($conn,$sql);
+        if ($var->num_rows > 0) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+    public function getProductsMale(){
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+     
+        $sql = "select * from product where category='male' order by pid desc limit 5";
+    
+        $var = mysqli_query($conn,$sql);
+        if ($var) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+    public function getProductsFemale(){
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+     
+        $sql = "select * from product where category='female' order by pid desc limit 5";
     
         $var = mysqli_query($conn,$sql);
         if ($var) {
@@ -113,11 +149,7 @@ class Product extends common{
         }
     }
 
-    
-
-
     public function Delete(){
-
         $conn = mysqli_connect('localhost','root','','TimelessDials');
         $sql = "delete from product where pid = '$this->pid'";
 

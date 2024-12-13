@@ -106,8 +106,11 @@
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="add-category.php">Add Category</a></li>
                                 <li><a class="nav-link" href="manage-category.php">Manage Category</a></li>
-                            </ul> -->
-                        </li>
+                            </ul>
+                        </li> -->
+
+                        <li><a class="nav-link" href="changePassword.php"><i class="fas fa-pen"></i>Change Password</a></li>
+                        <li><a class="nav-link" href="/TimelessDials"><i class="fas fa-globe"></i>Visit Site</a></li>
                     </ul>
                 </aside>
             </div>

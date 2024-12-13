@@ -120,6 +120,20 @@ if (cartClose) {
   });
 }
 
+
+const openCart=()=>{
+
+      cart.classList.add("show-cart");
+  
+}
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const action = urlParams.get('action');
+  if (action === 'openCart') {
+      openCart();
+  }
+}
+
 /*=============== DARK LIGHT THEME ===============*/
 // const themeButton = document.getElementById('theme-button')
 // const darkTheme = 'dark-theme'

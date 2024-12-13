@@ -1,10 +1,14 @@
 <?php
-include("headerFooter/header.php")
+
+include("headerFooter/header.php");
+
+
 ?>
 
 
 <!--==================== MAIN ====================-->
 <main class="main">
+
     <!--==================== HOME ====================-->
     <section class="home" id="home">
         <div class="home__container container grid">
@@ -12,7 +16,10 @@ include("headerFooter/header.php")
                 <img src="assets/img/home.png" alt="" class="home__img">
             </div>
             <div class="home__data">
-                <h1 class="home__title">NEW WATCH <br> COLLECTIONS B720</h1>
+                <h1 class="home__title">NEW WATCH <br> COLLECTIONS B720
+            
+                </h1>
+                
                 <p class="home__description single__description">
                     Latest arrival of the new imported watches of the B720 series,
                     with a modern and resistant design.
