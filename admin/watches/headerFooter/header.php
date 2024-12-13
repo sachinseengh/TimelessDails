@@ -109,7 +109,7 @@
                             </ul>
                         </li> -->
 
-                        <li><a class="nav-link" href="changePassword.php"><i class="fas fa-pen"></i>Change Password</a></li>
+                        <li><a class="nav-link" href="change-password.php"><i class="fas fa-pen"></i>Change Password</a></li>
                         <li><a class="nav-link" href="/TimelessDials"><i class="fas fa-globe"></i>Visit Site</a></li>
                     </ul>
                 </aside>
