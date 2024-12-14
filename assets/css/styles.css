@@ -197,7 +197,7 @@ body.dark-theme {
 /*=============== HEADER & NAV ===============*/
 .header {
   width: 100%;
-  background: transparent;
+  background: #1f1f1f;
   position: fixed;
   top: 0;
   left: 0;
@@ -1244,7 +1244,7 @@ body.dark-theme {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  width: 400px;
+  width: 800px;
 }
 
 .login-title {
@@ -1480,4 +1480,11 @@ body.dark-theme {
   font-size: 1.3rem;
   text-transform: uppercase;
   color: #fff;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 4px;
+  display: none;
 }

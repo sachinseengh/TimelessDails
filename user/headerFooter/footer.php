@@ -101,81 +101,80 @@ if ($message) {
 }
 ?>
 
-<!--=============== MAIN JS ===============-->
-<script src="assets/js/main.js"></script>
+
 
 <!-- js for ajax for updating cart -->
- <script>
-function updateCart(action, cartId) {
-    const url = action === 'increase' 
-        ? `Backend/Controller/increaseCart.php?id=${cartId}` 
-        : `Backend/Controller/decreaseCart.php?id=${cartId}`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                // Update the quantity for the specific item
-                const quantityElement = document.getElementById(`quantity-${cartId}`);
-                quantityElement.textContent = data.data.quantity;
+<script>
+    function updateCart(action, cartId) {
+        const url = action === 'increase' ?
+            `Backend/Controller/increaseCart.php?id=${cartId}` :
+            `Backend/Controller/decreaseCart.php?id=${cartId}`;
 
-                // Update the total price and total items
-                const totalAmountElement = document.querySelector('.cart__prices-total');
-                const totalItemsElement = document.querySelector('.cart__prices-item');
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Update the quantity for the specific item
+                    const quantityElement = document.getElementById(`quantity-${cartId}`);
+                    quantityElement.textContent = data.data.quantity;
 
-                totalAmountElement.textContent = `Rs. ${data.data.totalAmount}`;
-                totalItemsElement.textContent = `No of Items: ${data.data.totalItems}`;
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
+                    // Update the total price and total items
+                    const totalAmountElement = document.querySelector('.cart__prices-total');
+                    const totalItemsElement = document.querySelector('.cart__prices-item');
 
-
+                    totalAmountElement.textContent = `Rs. ${data.data.totalAmount}`;
+                    totalItemsElement.textContent = `No of Items: ${data.data.totalItems}`;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
 
-//uta ko le cart dekhaena
-/*=============== SHOW CART ===============*/
-const cart = document.getElementById("cart"),
-  cartShop = document.getElementById("cart-shop"),
-  cartClose = document.getElementById("cart-close");
 
 
-  
-
-/*===== CART SHOW =====*/
-/* Validate if constant exists */
-if (cartShop) {
-    
-  cartShop.addEventListener("click", () => {
-    cart.classList.add("show-cart");
-  });
-}
-
-/*===== CART HIDDEN =====*/
-/* Validate if constant exists */
-if (cartClose) {
-  cartClose.addEventListener("click", () => {
-    cart.classList.remove("show-cart");
-  });
-}
+    //uta ko le cart dekhaena
+    /*=============== SHOW CART ===============*/
+    const cart = document.getElementById("cart"),
+        cartShop = document.getElementById("cart-shop"),
+        cartClose = document.getElementById("cart-close");
 
 
-const openCart=()=>{
-      cart.classList.add("show-cart");
-  
-}
-window.onload = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const action = urlParams.get('action');
-  if (action === 'openCart') {
-      openCart();
-  }
-}
 
+
+    /*===== CART SHOW =====*/
+    /* Validate if constant exists */
+    if (cartShop) {
+
+        cartShop.addEventListener("click", () => {
+            cart.classList.add("show-cart");
+        });
+    }
+
+    /*===== CART HIDDEN =====*/
+    /* Validate if constant exists */
+    if (cartClose) {
+        cartClose.addEventListener("click", () => {
+            cart.classList.remove("show-cart");
+        });
+    }
+
+
+    const openCart = () => {
+        cart.classList.add("show-cart");
+
+    }
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const action = urlParams.get('action');
+        if (action === 'openCart') {
+            openCart();
+        }
+    }
 </script>
-
+<!--=============== MAIN JS ===============-->
+<script src="../assets/js/main.js"></script>
 </body>
 
 </html>
