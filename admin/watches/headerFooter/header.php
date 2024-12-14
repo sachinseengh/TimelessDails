@@ -57,9 +57,9 @@
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">Hi,<?php echo $_COOKIE['username'] ?></div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <!-- <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
                             <a href="features-profile.html" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
@@ -74,22 +74,22 @@
                             <a href="#" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
-                        </div>
+                        </div> -->
                     </li>
                 </ul>
             </nav>
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.php">TilessDials</a>
+                        <a href="index.php">Timeless Dials</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="index.php">TD</a>
                     </div>
                     <ul class="sidebar-menu">
-                        <li class="menu-header">Dashboard</li>
+                     <li class="menu-header">  <a href="index.php">Dashboard</a></li>
                         <li class="dropdown active">
-                            <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                            <a href="index.php" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Starter</li>
                         <li class="dropdown">
@@ -111,6 +111,7 @@
 
                         <li><a class="nav-link" href="change-password.php"><i class="fas fa-pen"></i>Change Password</a></li>
                         <li><a class="nav-link" href="/TimelessDials"><i class="fas fa-globe"></i>Visit Site</a></li>
+                        <li><a class="nav-link" href="/TimelessDials/admin/watches/logout.php"><i class="fas fa-door-open"></i>Logout</a></li>
                     </ul>
                 </aside>
             </div>

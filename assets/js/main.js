@@ -122,7 +122,6 @@ if (cartClose) {
 
 
 const openCart=()=>{
-
       cart.classList.add("show-cart");
   
 }

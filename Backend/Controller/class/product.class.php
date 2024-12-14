@@ -89,7 +89,7 @@ class Product extends common
     {
         $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
 
-        $sql = "select * from product order by pid desc limit 4";
+        $sql = "select * from product order by pid desc limit 3";
 
         $var = mysqli_query($conn, $sql);
         if ($var->num_rows > 0) {
@@ -151,6 +151,36 @@ class Product extends common
         $var = mysqli_query($conn, $sql);
         if ($var->num_rows > 0) {
             $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getTotalWatch()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+
+        $sql = "select count(*) as total_Watch from product";
+
+        $var = mysqli_query($conn, $sql);
+        if ($var) {
+            $datalist = $var->fetch_object();
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+    public function getTotalWatchQuantity()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'TimelessDials');
+
+        $sql = "select SUM(quantity)  as quantity from product  ";
+
+        $var = mysqli_query($conn, $sql);
+        if ($var) {
+            $datalist = $var->fetch_object();
             return $datalist;
         } else {
             return false;

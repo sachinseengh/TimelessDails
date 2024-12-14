@@ -14,6 +14,7 @@ $user->set('name', $_POST['name']);
 $user->set('phone', $_POST['phone']);
 $user->set('city', $_POST['city']);
 $user->set('address', $_POST['address']);
+$user->set('phone', $_POST['phone']);
 
 
 
