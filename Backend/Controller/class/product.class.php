@@ -18,7 +18,7 @@ class Product extends common
 
         $res = mysqli_query($conn, $sql);
         if ($res) {
-            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg="Product Added Successfully"');
+            header('Location:/TimelessDials/admin/watches/manage-watch.php?msg=Product Added Successfully');
             exit();
         } else {
             header('Location:/TimelessDials/admin/watches/manage-watch.php?ErrMsg="Failed to add Product"');
